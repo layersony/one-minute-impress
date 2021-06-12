@@ -1,5 +1,4 @@
 from datetime import datetime
-from sqlalchemy.orm import backref
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from datetime import datetime
@@ -49,8 +48,22 @@ class Pitch(db.Model):
   posted = db.Column(db.DateTime, default=datetime.utcnow())
   likes = db.Column(db.Integer)
   dislikes = db.Column(db.Integer)
-  user_id = db.Column(db.Integer, db.Foregin_key('users.id'))
-
+  user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
   comments = db.relationship('Comment', backref='pitch', lazy='dynamic')
-class Comment():
-  pass
+
+  def save_pitch(self):
+    db.session.add(self)
+    db.session.commit()
+
+  
+class Comment(db.Model):
+  __tablename__ = 'comments'
+
+  id = db.Column(db.Integer, primary_key = True)
+  comment = db.Column(db.String(2000))
+  user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+  pitch_id = db.Column(db.Integer, db.ForeignKey('pitch.id'))
+
+  def save_comment(self):
+    db.session.add(self)
+    db.session.commit()

@@ -1,0 +1,7 @@
+{% macro displayPitches(pitches) %}
+
+  {% for nopit in pitches %}
+    <p>{{ nopit.pitch.title(pitch) }}</p>
+  {% endfor %}
+
+{% endmacro %}

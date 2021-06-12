@@ -30,3 +30,27 @@ class User(db.Model):
   def __repr__(self):
     return f'User {self.username}'
   
+class Role(db.Model):
+  __tablename__ = 'roles'
+
+  id = db.Column(db.Integer, primary_key = True)
+  name = db.Column(db.String(255))
+  users = db.relationship('User', backref='roles', lazy='dynamic')
+
+  def __repr__(self):
+    return f'User {self.name}'
+
+class Pitch(db.Model):
+  __tablename__ = 'pitch'
+  id = db.Column(db.Integer, primary_key = True)
+  title = db.Column(db.String(255))
+  content = db.Column(db.String())
+  category = db.Column(db.String())
+  posted = db.Column(db.DateTime, default=datetime.utcnow())
+  likes = db.Column(db.Integer)
+  dislikes = db.Column(db.Integer)
+  user_id = db.Column(db.Integer, db.Foregin_key('users.id'))
+
+  comments = db.relationship('Comment', backref='pitch', lazy='dynamic')
+class Comment():
+  pass

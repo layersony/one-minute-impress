@@ -3,9 +3,9 @@ from wtforms import StringField, TextAreaField, SubmitField, SelectField, RadioF
 from wtforms.validators import Required
 
 class PitchForm(FlaskForm):
-  title = StringField('Pitch title', validators=[Required()])
-  content = TextAreaField('Pitch content', validators=[Required()])
-  category = SelectField('Type', choices=[('-----','-----'),('pickuplines','PickUp Lines'), ('inspirations','Inspirations'), ('slogan', 'Slogan')])
+  title = StringField('Pitch Title', validators=[Required()])
+  content = TextAreaField('Pitch Content', validators=[Required()])
+  category = SelectField('Category', choices=[('-----','-----'),('PickUp Lines','PickUp Lines'), ('Inspirational','Inspirational'), ('Product Slogan', 'Product Slogan')])
   submit = SubmitField('Submit')
 
 class UpdateForm(FlaskForm):

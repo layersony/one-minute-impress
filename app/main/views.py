@@ -8,11 +8,12 @@ from flask_login import login_required, current_user
 
 @main.route('/')
 def index():
-  pitch = Pitch.query.all()
-  vote_form = VoteForm()
-  
+  pickup = Pitch.get_pitch_category('pickuplines')
+  slogan = Pitch.get_pitch_category('slogan')
+  inspire = Pitch.get_pitch_category('inspirations')
 
-  return render_template('index.html', pitch=pitch, vote_form=vote_form)
+  vote_form = VoteForm()
+  return render_template('index.html', pickup=pickup, vote_form=vote_form, inspire=inspire, slogan=slogan)
 
 @main.route('/user/<uname>')
 def profile(uname):

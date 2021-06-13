@@ -1,6 +1,10 @@
-{% macro displayPitches(pitches) %}
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
 
-  {% for nopit in pitches %}
+{% block content%}
+<h1>Working</h1>
+<div class="container">
+  {% for nopit in pitch %}
     <p>{{ nopit.title }}</p>
     <a href="{{ url_for('main.comment', id= nopit.id) }}"><button>Comment</button></a>
     <form action="#">
@@ -14,5 +18,9 @@
     {{trial}}
 
   {% endfor %}
+</div>
 
-{% endmacro %}
+
+
+
+{% endblock %}

@@ -6,10 +6,27 @@
 <div class="container d-flex justify-content-center align-items-center">
   
   <div class="loginForm ">
+    <p>Time: <span id='countdown'>60</span></p>
     {{ wtf.quick_form(pitchform) }}
   </div>
 </div>
 
-<p>{{ saved }}</p>
+<script>
+  let startmin = 60;
+
+  const countdownEl = document.getElementById('countdown')
+
+  timerid = setInterval(function(){
+    if (startmin != 0){
+      countdownEl.innerHTML = `${startmin}`;
+      startmin--;
+    }else{
+      clearInterval(timerid)
+      document.getElementById('submit').click();
+    }
+  }, 1000);
+ 
+
+</script>
 
 {% endblock %}

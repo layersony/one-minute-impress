@@ -14,8 +14,11 @@ class Config:
 class ProdConfig(Config):
   pass
 
+class TestConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://layersony:1q2w3e4r5t6y@localhost/oneminipress_test'
+
 class DevConfig(Config):
   SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://layersony:1q2w3e4r5t6y@localhost/oneminipress'
   DEBUG = True
 
-config_options = {'development':DevConfig, 'production':ProdConfig}
+config_options = {'development':DevConfig, 'production':ProdConfig, 'testing':TestConfig}

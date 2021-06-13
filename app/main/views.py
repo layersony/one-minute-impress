@@ -8,9 +8,9 @@ from flask_login import login_required, current_user
 
 @main.route('/')
 def index():
-  pickup = Pitch.get_pitch_category('pickuplines')
-  slogan = Pitch.get_pitch_category('slogan')
-  inspire = Pitch.get_pitch_category('inspirations')
+  pickup = Pitch.get_pitch_category('PickUp Lines')
+  slogan = Pitch.get_pitch_category('Product Slogan')
+  inspire = Pitch.get_pitch_category('Inspirational')
 
   vote_form = VoteForm()
   return render_template('index.html', pickup=pickup, vote_form=vote_form, inspire=inspire, slogan=slogan)

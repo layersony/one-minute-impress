@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+<div class="container">
+<div class="row">
+<!-- displaying  Username-->
+  <div class="col-md-4">
+    <h3> {{user.username| capitalize}} </h3>
+
+    <a href="{{url_for('main.new_pitch')}}"><button>New Pitch</button></a>
+  </div>
+  {% if pitches %}
+    {% for justone in pitches%}
+      <p>{{justone.content}}</p>
+    {% endfor %}
+  {% else %}
+    <p>No Pitches Yet</p>
+  {% endif %}
+</div>
+</div>
+{% endblock %}

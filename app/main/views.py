@@ -10,6 +10,7 @@ from flask_login import login_required, current_user
 def index():
   pitch = Pitch.query.all()
   vote_form = VoteForm()
+  
 
   return render_template('index.html', pitch=pitch, vote_form=vote_form)
 

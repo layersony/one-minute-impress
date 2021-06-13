@@ -2,6 +2,15 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content%}
-  <p>{{ pitch.title }}</p>
-  {{ wtf.quick_form(comment) }}
+
+  <p class="text-center">Comment <span>{{ pitch.title }}</span></p>
+  <div class="container d-flex justify-content-center align-items-center">
+
+    <div class="commentForm">
+      <div class="content">
+        {{ pitch.content }}
+      </div>
+      {{ wtf.quick_form(comment) }}
+    </div>
+  </div>
 {% endblock %}

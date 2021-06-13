@@ -13,7 +13,7 @@ class UpdateForm(FlaskForm):
   submit = SubmitField('Submit')
 
 class CommentForm(FlaskForm):
-  comment = TextAreaField('Speak out Your Mind')
+  comment = TextAreaField('')
   submit = SubmitField('Submit')
 
 class VoteForm(Form):

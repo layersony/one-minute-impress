@@ -6,16 +6,24 @@
 <div class="home container p-4 mt-3">
   {% for nopit in pitch %}
   <div class="pitch">
-    <p>{{ nopit.title }}</p>
-    <a href="{{ url_for('main.comment', id= nopit.id) }}"><button>Comment</button></a>
-    <form action="#">
-      {% for subfield in vote_form.vote %}
-      <p>
-        {{ subfield }}
-        {{ subfield.label }}
-      </p>
-      {% endfor %}
-    </form>
+    <div class="d-md-flex justify-content-between">
+      <h3>{{ nopit.title }}</h3>
+      <p>{{ nopit.posted }}</p>
+    </div>
+    <div class="text">
+      <p>{{ nopit.content }}</p>
+    </div>
+    <div class='d-md-flex justify-content-between mt-1'>
+      <form action="#">
+        {% for subfield in vote_form.vote %}
+        <p>
+          {{ subfield }}
+          {{ subfield.label }}
+        </p>
+        {% endfor %}
+      </form>
+      <a href="{{ url_for('main.comment', id= nopit.id) }}"><button class="btn btn-md">Comment</button></a>
+    </div>
   </div>
   {% endfor %}
 </div>

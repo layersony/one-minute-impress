@@ -56,6 +56,11 @@ class Comment(db.Model):
   def save_comment(self):
     db.session.add(self)
     db.session.commit()
+  
+  @classmethod
+  def get_specific_comment(cls, id):
+    return cls.query.filter_by(pitch_id = id).all()
+
 
 @login_manager.user_loader
 def load_user(user_id):

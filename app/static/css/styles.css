@@ -86,5 +86,6 @@ input[type='submit']:hover{
   border-bottom: 5px solid;
   margin-top: 7px;
   padding: 15px;
-  border-radius: 4px 4px 40px 4px;
+  background-color: rgba(0, 0, 0, 0.14);
+  border-radius: 4px 4px 30px 4px;
 }

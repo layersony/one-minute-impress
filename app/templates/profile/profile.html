@@ -4,20 +4,28 @@
 
 {% block content %}
 <div class="container">
-<div class="row">
-<!-- displaying  Username-->
-  <div class="col-md-4">
-    <h3> {{user.username| capitalize}} </h3>
-
-    <a href="{{url_for('main.new_pitch')}}"><button>New Pitch</button></a>
+  <div class="row">
+    <div class="col-md-4 bg-primary">
+      <h3> {{user.username| capitalize}} </h3>
+      <a href="{{url_for('main.new_pitch')}}"><button>New Pitch</button></a>
+    </div>
+    <div class="col-md-8">
+      {% if pitches %}
+      {% for justone in pitches%}
+      <div class="pitch">
+        <div class="d-md-flex justify-content-between">
+          <h3>{{ justone.title }}</h3>
+          <p>{{ justone.posted }}</p>
+        </div>
+        <div class="text">
+          <p>{{ justone.content }}</p>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+        <p>No Pitches Yet</p>
+      {% endif %}
+    </div>
   </div>
-  {% if pitches %}
-    {% for justone in pitches%}
-      <p>{{justone.content}}</p>
-    {% endfor %}
-  {% else %}
-    <p>No Pitches Yet</p>
-  {% endif %}
-</div>
 </div>
 {% endblock %}

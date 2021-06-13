@@ -1,0 +1,33 @@
+.navcustom{
+  background-color: white;
+  min-height: 100px;
+  padding: 10px;
+  border-radius: 0px 0px 5px 5px;
+}
+.navcustom ul{
+  width: 100%;
+
+}
+.navcustom ul li{
+  margin: 0 80px;
+}
+.navcustom ul li>.title{
+  font-size: 45px;
+  text-decoration: none;
+  color: black;
+}
+.navcustom ul li>.other{
+  margin-top: 15px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 2px solid;
+}
+
+.navcustom ul li>.other:hover{
+  background-color: beige;
+  border: 2px solid beige;
+  color: #000000;
+}
+.nav-item img{
+  width: 100px;
+}

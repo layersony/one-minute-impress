@@ -1,9 +1,13 @@
-<ul class="nav navbar-nav">
-  <li><a href="/">Home</a></li>
-  {% if current_user.is_authenticated %}
-    <li><a href="{{ url_for('main.profile', uname = current_user.username) }}">Profile</a></li>
-    <li><a href="{{url_for('auth.logout')}}">Sign Out</a></li>
-  {% else %}
-    <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
-  {% endif %}
-</ul>
+<nav class="navbar  navcustom">
+  <ul class="nav justify-content-center">
+    <li class="nav-item"><a href="/"><button  class="other" id="home">Home</button></a></li>
+    {% if current_user.is_authenticated %}
+    <li class="nav-item"><a href="{{ url_for('main.profile', uname = current_user.username) }}" class="nav-link title">Profile</a></li>
+    <li class="nav-item"><a href="{{url_for('auth.logout')}}"><button class="other" id="login">Log Out</button></a></li>
+    {% else %}
+    <li class="nav-item"><a class="nav-link title"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn2.iconfinder.com%2Fdata%2Ficons%2Ftimer-flat%2F64%2Ftimer-11-512.png&f=1&nofb=1" alt="logo" class="img-fluid"></a></li>
+    <li class="nav-item"><a href="{{url_for('auth.login')}}"><button class="other" id="login">Sign In</button></a></li>
+    {% endif %}
+  </ul>
+</nav>
+<hr>

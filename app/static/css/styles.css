@@ -1,5 +1,5 @@
 .navcustom{
-  background-color: rgb(222, 184, 135);
+  background-image: linear-gradient(to right, #3E654C , #57D6D6);
   min-height: 90px;
 }
 .navcustom ul{
@@ -22,10 +22,10 @@
 }
 
 .navcustom ul li button:hover{
-  background-color: rgb(222, 184, 135);
+  background-color: #4B9E92;
   border: 0.5px solid beige;
   box-shadow: 5px;
-  color: #000000;
+  color: white;
 }
 .nav-item img{
   width: 100px;
@@ -42,13 +42,14 @@
 }
 input[type='submit']{
   margin-top:5px;
-  border: 1px solid rgb(222, 184, 135);
+  border: 1px solid #4B9E92;
   background-color: white;
   color: black;
 }
 input[type='submit']:hover{
   border: 1px solid white;
-  background-color: rgb(222, 184, 135);
+  background-color: #4B9E92;
+  color: white;
 }
 .home{
   background-color: rgba(0, 0, 0, 0.14);
@@ -72,14 +73,15 @@ input[type='submit']:hover{
 
 .pitch button{
   margin-top:5px;
-  border: 1px solid rgb(222, 184, 135);
+  border: 1px solid #4B9E92;
   background-color: white;
   color: black;
 }
 
 .pitch button:hover{
-  border: 1px solid white;
-  background-color: rgb(222, 184, 135);
+  border: 1px solid black;
+  background-color: #4B9E92;
+  color: white;
 }
 .commentForm {
   border-top: 1px solid;

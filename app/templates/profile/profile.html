@@ -5,9 +5,23 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col-md-4 bg-primary">
+    <div class="col-md-4">
       <h3> {{user.username| capitalize}} </h3>
-      <a href="{{url_for('main.new_pitch')}}"><button>New Pitch</button></a>
+      {% if user.profile_pic %}
+        <img src="{{url_for('static',filename=user.profile_pic)}}" alt="" class="img-thumbnail">
+      {%else%}
+        <p>No profile picture</p>
+        {% if user == current_user %}
+        <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype="multipart/form-data">
+          <input type="file" name="photo" class="form-control" required>
+          <input type="submit" value='Upload Photo' class='mt-1 mb-1 btn'>
+        </form>
+        {% endif %}
+      {% endif %}
+
+
+      
+      <a href="{{url_for('main.new_pitch')}}"><button class='btn btn-outline-success mt-2'>New Pitch</button></a>
     </div>
     <div class="col-md-8">
       {% if pitches %}

@@ -1,6 +1,6 @@
 from . import main
-from .. import db
-from flask import render_template, abort, url_for, redirect
+from .. import db, photos
+from flask import render_template, abort, url_for, redirect, request
 from ..models import Pitch, User, Comment
 from .forms import PitchForm, UpdateForm, CommentForm, VoteForm
 from flask_login import login_required, current_user
@@ -40,6 +40,18 @@ def update(uname):
     return redirect(url_for('.profile', uname=user.username ))
 
   return render_template('profile/update.html', form=form)
+
+@main.route('/user/<uname>/update/pic', methods = ['POST'])
+@login_required
+def update_pic(uname):
+  user = User.query.filter_by(username = uname).first()
+  print(request.files)
+  if 'photo' in request.files:
+    filename = photos.save(request.files['photo'])
+    path = f'photos/{filename}'
+    user.profile_pic = path
+    db.session.commit()
+  return redirect(url_for('main.profile', uname=uname))
 
 @main.route('/newpitch', methods=['GET', 'POST'])
 @login_required

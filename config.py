@@ -2,7 +2,6 @@ import os
 import secrets
 
 secret =secrets.token_urlsafe(32)
-print(secret)
 class Config:
   SECRET_KEY = secret
   MAIL_SERVER = 'smtp.googlemail.com'
@@ -10,6 +9,7 @@ class Config:
   MAIL_USE_TLS = True
   MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
   MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+  UPLOADED_PHOTOS_DEST = 'app/static/photos'
 
 class ProdConfig(Config):
   pass

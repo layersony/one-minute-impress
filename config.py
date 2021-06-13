@@ -1,6 +1,10 @@
 import os
+import secrets
+
+secret =secrets.token_urlsafe(32)
+print(secret)
 class Config:
-  SECRET_KEY = 'AMMAINGI'
+  SECRET_KEY = secret
 
 class ProdConfig(Config):
   pass

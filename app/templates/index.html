@@ -2,25 +2,23 @@
 {% import 'macros.html' as macro %}
 
 {% block content%}
-<h1>Working</h1>
-<div class="container">
+<h1 class="text-center">One Minute Pitches</h1>
+<div class="home container p-4 mt-3">
   {% for nopit in pitch %}
+  <div class="pitch">
     <p>{{ nopit.title }}</p>
     <a href="{{ url_for('main.comment', id= nopit.id) }}"><button>Comment</button></a>
     <form action="#">
-        {% for subfield in vote_form.vote %}
-        <p>
-            {{ subfield }}
-            {{ subfield.label }}
-        </p>
-        {% endfor %}
-      </form>
-    {{trial}}
-
+      {% for subfield in vote_form.vote %}
+      <p>
+        {{ subfield }}
+        {{ subfield.label }}
+      </p>
+      {% endfor %}
+    </form>
+  </div>
   {% endfor %}
 </div>
-
-
 
 
 {% endblock %}

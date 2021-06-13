@@ -1,17 +1,18 @@
 {% macro displayPitches(pitches) %}
 
   {% for nopit in pitches %}
-    <p>{{ nopit.title }}</p>
-    <a href="{{ url_for('main.comment', id= nopit.id) }}"><button>Comment</button></a>
-    <form action="#">
+    <div class="pitch">
+      <p>{{ nopit.title }}</p>
+      <a href="{{ url_for('main.comment', id= nopit.id) }}"><button>Comment</button></a>
+      <form action="#">
         {% for subfield in vote_form.vote %}
         <p>
-            {{ subfield }}
-            {{ subfield.label }}
+          {{ subfield }}
+          {{ subfield.label }}
         </p>
         {% endfor %}
       </form>
-    {{trial}}
+    </div>
 
   {% endfor %}
 

@@ -91,3 +91,48 @@ input[type='submit']:hover{
   background-color: rgba(0, 0, 0, 0.14);
   border-radius: 4px 4px 30px 4px;
 }
+footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  color: #ffffff;
+  height: auto;
+  background-image: linear-gradient(to right, #3E654C , #57D6D6);
+}
+footer h4{
+  color: #ffffff;
+}
+footer>.social{
+  background-color: transparent;
+}
+footer>.social ol{
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+footer>.social ol li {
+  padding: 5px;
+  font-size: 15px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+footer>.social ol li >.fa {
+  padding: 5px;
+  font-size: 25px;
+  text-decoration: none;
+  color: #ffffff;
+}
+footer>.social ol li>.fa:hover{
+  font-size: 35px;
+  color: #ffffff;
+  transition: ease-in 0.1s;
+}
+
+footer>.footer_info p{
+  font-size: 15px;
+}

@@ -6,89 +6,17 @@
 <h1 class="text-center">One Minute Pitches</h1>
 <div id="inspire">
   <h3 class="text-center"> Inspirations </h3>
-  <div class="home container p-4 mt-3">
-    {% for nopit in inspire %}
-    <div class="pitch">
-      <div class="d-md-flex justify-content-between">
-        <h3>{{ nopit.title }}</h3>
-        <p>{{ nopit.posted }}</p>
-      </div>
-      <div class="text">
-        <p>{{ nopit.content }}</p>
-      </div>
-      <div class='d-md-flex justify-content-between mt-1'>
-        <form action="#">
-          {% for subfield in vote_form.vote %}
-          <p>
-            {{ subfield }}
-            {{ subfield.label }}
-          </p>
-          {% endfor %}
-        </form>
-        <span>Category: {{nopit.category}}</span>
-        <a href="{{ url_for('main.comment', id= nopit.id) }}"><button class="btn btn-md">Comment</button></a>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
+  {{ macro.displayPitches(inspire) }}
 </div>
 
 <div id="pickup">
   <h3 class="text-center"> PickUp lines</h3>
-  <div class="home container p-4 mt-3">
-    {% for nopit in pickup %}
-    <div class="pitch">
-      <div class="d-md-flex justify-content-between">
-        <h3>{{ nopit.title }}</h3>
-        <p>{{ nopit.posted }}</p>
-      </div>
-      <div class="text">
-        <p>{{ nopit.content }}</p>
-      </div>
-      <div class='d-md-flex justify-content-between mt-1'>
-        <form action="#">
-          {% for subfield in vote_form.vote %}
-          <p>
-            {{ subfield }}
-            {{ subfield.label }}
-          </p>
-          {% endfor %}
-        </form>
-        <span>Category: {{nopit.category}}</span>
-        <a href="{{ url_for('main.comment', id= nopit.id) }}"><button class="btn btn-md">Comment</button></a>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
+  {{ macro.displayPitches(pickup) }}
 </div>
 
 <div id="slogan">
   <h3 class="text-center"> Product Slogans</h3>
-  <div class="home container p-4 mt-3">
-    {% for nopit in slogan %}
-    <div class="pitch">
-      <div class="d-md-flex justify-content-between">
-        <h3>{{ nopit.title }}</h3>
-        <p>{{ nopit.posted }}</p>
-      </div>
-      <div class="text">
-        <p>{{ nopit.content }}</p>
-      </div>
-      <div class='d-md-flex justify-content-between mt-1'>
-        <form action="#">
-          {% for subfield in vote_form.vote %}
-          <p>
-            {{ subfield }}
-            {{ subfield.label }}
-          </p>
-          {% endfor %}
-        </form>
-        <span>Category: {{nopit.category}}</span>
-        <a href="{{ url_for('main.comment', id= nopit.id) }}"><button class="btn btn-md">Comment</button></a>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
+  {{ macro.displayPitches(slogan) }}
 </div>
 
 {% endblock %}

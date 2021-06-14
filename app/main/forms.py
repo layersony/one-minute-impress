@@ -15,7 +15,3 @@ class UpdateForm(FlaskForm):
 class CommentForm(FlaskForm):
   comment = TextAreaField('')
   submit = SubmitField('Submit')
-
-class VoteForm(FlaskForm):
-  vote = RadioField('Vote', choices=[('upvote', 'UpVote'), ('downvote', 'DownVote')])
-  submit = SubmitField('Submit Vote')

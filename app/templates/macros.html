@@ -1,6 +1,26 @@
 {% macro displayPitches(pitches) %}
 
+<div class="home container p-4 mt-3">
+  {% for nopit in pitches %}
+  <div class="pitch">
+    <div class="d-md-flex justify-content-between">
+      <h3>{{ nopit.title }}</h3>
+      <p>{{ nopit.posted }}</p>
+    </div>
+    <div class="text">
+      <p>{{ nopit.content }}</p>
+    </div>
+    <div class='d-md-flex justify-content-between mt-1'>
 
+      <a href="{{url_for('main.likes',pitch_id = nopit.id)}}" class= "btn btn-primary btn-sm"><i></i>Likes <span>{{nopit.likes.count()}}</span></a>
+      <a href="{{url_for('main.dislikes',pitch_id = nopit.id)}}" class= "btn btn-danger btn-sm"><i class="far fa-thumbs-up"></i>Dislikes <span>{{nopit.dislikes.count()}}</span></a>
+
+      <span>Category: {{nopit.category}}</span>
+      <a href="{{ url_for('main.comment', id= nopit.id) }}"><button class="btn btn-md">Comment</button></a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 
 
 {% endmacro %}

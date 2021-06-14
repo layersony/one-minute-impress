@@ -1,8 +1,8 @@
 from . import main
 from .. import db, photos
 from flask import render_template, abort, url_for, redirect, request
-from ..models import Pitch, User, Comment
-from .forms import PitchForm, UpdateForm, CommentForm, VoteForm
+from ..models import Pitch, User, Comment, Likes, Dislikes
+from .forms import PitchForm, UpdateForm, CommentForm
 from flask_login import login_required, current_user
 
 
@@ -12,8 +12,7 @@ def index():
   slogan = Pitch.get_pitch_category('Product Slogan')
   inspire = Pitch.get_pitch_category('Inspirational')
 
-  vote_form = VoteForm()
-  return render_template('index.html', pickup=pickup, vote_form=vote_form, inspire=inspire, slogan=slogan)
+  return render_template('index.html', pickup=pickup, inspire=inspire, slogan=slogan)
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -46,7 +45,6 @@ def update(uname):
 @login_required
 def update_pic(uname):
   user = User.query.filter_by(username = uname).first()
-  print(request.files)
   if 'photo' in request.files:
     filename = photos.save(request.files['photo'])
     path = f'photos/{filename}'
@@ -64,8 +62,8 @@ def new_pitch():
     content = pitchform.content.data
     category = pitchform.category.data
 
-    new_pitch = Pitch(title=title, content=content, category=category, user_id=current_user.id,likes=0, dislikes=0)
-    print(current_user)
+    new_pitch = Pitch(title=title, content=content, category=category, user_id=current_user.id)
+    print(new_pitch)
     new_pitch.save_pitch()
     return redirect(url_for('main.index'))
 
@@ -88,3 +86,22 @@ def comment(id):
   
   return render_template('profile/comment.html', comment=form,pitch=pitch)
 
+@main.route('/pitch/likes/<pitch_id>', methods = ['GET', 'POST'])
+@login_required
+def likes(pitch_id):    
+    if Likes.query.filter(Likes.user_id==current_user.id,Likes.pitch_id==pitch_id).first():
+        return redirect(url_for('main.index'))
+
+    new_likes = Likes(pitch_id=pitch_id, user_id = current_user.id)
+    new_likes.save_likes()
+    return redirect(url_for('main.index'))
+
+@main.route('/pitch/dislikes/<pitch_id>', methods = ['GET', 'POST'])
+@login_required
+def dislikes(pitch_id):
+    if Dislikes.query.filter(Dislikes.user_id==current_user.id,Dislikes.pitch_id==pitch_id).first():
+        return  redirect(url_for('main.index'))
+
+    new_dislikes = Dislikes(pitch_id=pitch_id, user_id = current_user.id)
+    new_dislikes.save_dislikes()
+    return redirect(url_for('main.index'))

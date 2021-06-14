@@ -5,7 +5,7 @@
   <div class="pitch">
     <div class="d-md-flex justify-content-between">
       <h3>{{ nopit.title }}</h3>
-      <p>{{ nopit.posted }}</p>
+      <p>{{ nopit.posted.strftime('%I:%M %p, %a %b %d, %Y') }}</p>
     </div>
     <div class="text">
       <p>{{ nopit.content }}</p>

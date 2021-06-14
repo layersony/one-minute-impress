@@ -7,7 +7,7 @@
 
 }
 .navcustom ul li{
-  margin: 0 80px;
+  margin: 0 40px;
 }
 .navcustom ul li>.title{
   font-size: 30px;
@@ -17,9 +17,14 @@
 .navcustom ul li>.other{
   margin-top: 15px;
   font-size: 20px;
-  border-radius: 5px;
-  border: 2px solid;
+  text-decoration: none;
+  color: black;
 }
+.navcustom ul li>.other:hover{
+  margin-top: 16px;
+  color: white;
+}
+
 
 .navcustom ul li button:hover{
   background-color: #4B9E92;

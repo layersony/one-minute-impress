@@ -1,13 +1,22 @@
-<nav class="navbar  navcustom">
-  <ul class="nav justify-content-center">
-    <li class="nav-item"><a href="/"><button  class="other btn-lg mt-md-2" id="home">Home</button></a></li>
-    {% if current_user.is_authenticated %}
-    <li class="nav-item"><a href="{{ url_for('main.profile', uname = current_user.username) }}" class="nav-link title">{{ current_user.username| capitalize }}</a></li>
-    <li class="nav-item"><a href="{{url_for('auth.logout')}}"><button class="other btn-lg mt-2" id="login">Log Out</button></a></li>
-    {% else %}
-    <li class="nav-item"><a href='/' class="nav-link title"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2016%2F07%2F10%2F119323_stopwatch_512x512.png&f=1&nofb=1" alt="logo" class="img-fluid"></a></li>
-    <li class="nav-item"><a href="{{url_for('auth.login')}}"><button class="other btn-lg mt-2" id="login">Sign In</button></a></li>
-    {% endif %}
-  </ul>
-</nav>
+<div class="navbar navcustom navbar-inverse" role="navigation">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <a href='/' class="nav-item nav-link title ml-md-3"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2016%2F07%2F10%2F119323_stopwatch_512x512.png&f=1&nofb=1" alt="logo" class="img-fluid"></a>
+      </div>
+
+      <div class="nav navbar-nav navbar-right">
+        <ul class="nav d-flex">
+          <li><a class="nav-item other" href="/">Home</a></li>
+          <li><a class="nav-item other" href="{{url_for('main.new_pitch')}}">Pitch</a></li>
+
+          {% if current_user.is_authenticated %}
+          <li><a class="nav-item other" href="{{ url_for('main.profile', uname = current_user.username) }}">{{ current_user.username| capitalize }}</a></li>
+          <li><a class="nav-item other" href="{{url_for('auth.logout')}}">Log Out</a></li>
+          {% else %}
+          <li><a class="nav-item other" href="{{url_for('auth.login')}}">Sign In</a></li>
+          {% endif %}
+        </ul>
+      </div>
+  </div>
+</div>
 <hr>

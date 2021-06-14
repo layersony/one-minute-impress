@@ -84,7 +84,9 @@ def comment(id):
     new_comment.save_comment()
     return redirect(url_for('main.index'))
   
-  return render_template('profile/comment.html', comment=form,pitch=pitch)
+  pitchComment = Comment.query.filter_by(pitch_id=id).all()
+  print(pitchComment)
+  return render_template('profile/comment.html', comment=form,pitch=pitch, pitchcomment = pitchComment)
 
 @main.route('/pitch/likes/<pitch_id>', methods = ['GET', 'POST'])
 @login_required

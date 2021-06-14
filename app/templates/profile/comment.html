@@ -13,4 +13,16 @@
       {{ wtf.quick_form(comment) }}
     </div>
   </div>
+  <div class="row">
+    {% if pitchcomment %}
+      {% for justone in pitchcomment%}
+        <div class="pitch col-md-3">
+          <p>{{ justone.comment }}</p>
+          <p>Comment By <span class="text-success">{{ justone.users.username|capitalize }}</span></p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No comments Yet</p>
+    {% endif %}
+  </div>
 {% endblock %}

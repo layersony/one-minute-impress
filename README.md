@@ -30,6 +30,8 @@ It is hosted by heroku
 ## Running the Application
 
 * To run the application, in your terminal:
+* In manage.py change from `create_app('production') to create_app('development')`
+
 
         $ pip install -r requirements.txt
         $ chmod +x run.py
@@ -38,6 +40,7 @@ It is hosted by heroku
 ## Testing the Application
 
 * To run the tests for the application file:
+* In manage.py change from `create_app('production') to create_app('testing')`
 
         $ python3 manage.py test
         
